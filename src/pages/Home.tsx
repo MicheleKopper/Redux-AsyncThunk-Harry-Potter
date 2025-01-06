@@ -1,7 +1,8 @@
+import { CardWizard } from "../components/Card/Card";
+
+
 export function Home() {
   return (
-    <div>
-      <h1>Hellou</h1>
-    </div>
+    <CardWizard/>
   );
 }

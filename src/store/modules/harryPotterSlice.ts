@@ -31,13 +31,14 @@ const initialState: WizardState = {
   currentPage: 1,
 };
 
-// Buscar os dados da API - CARD
+// Buscar os dados da API
 export const wizardAsyncThunk = createAsyncThunk<Wizard[]>(
   "wizard/list",
   async () => {
     const response = await axios.get<WizardApiResponse[]>(
       "https://hp-api.onrender.com/api/characters"
     );
+    console.log(response.data);
 
     const results: Wizard[] = response.data.map((wizard) => ({
       id: wizard.id,
@@ -64,6 +65,8 @@ const wizardSlice = createSlice({
       })
 
       .addCase(wizardAsyncThunk.fulfilled, (state, action) => {
+        console.log("Dados recebidos:", action.payload);
+       
         state.loading = false;
         state.list = action.payload;
         state.total = action.payload.length;
