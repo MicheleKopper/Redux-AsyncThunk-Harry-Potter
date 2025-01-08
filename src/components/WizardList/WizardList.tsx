@@ -32,6 +32,8 @@ export function WizardList() {
         },
         gap: "16px", 
         padding: { xs: "16px", sm: "32px", md: "64px" }, 
+        justifyContent:"center",
+       
       }}
     >
       {list.length > 0 ? (

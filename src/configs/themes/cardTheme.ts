@@ -28,4 +28,48 @@ export const cardTheme = createTheme({
       color: "#686D76",
     },
   },
+
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          display: "flex",
+          flexDirection: "row",
+          width: "370px",
+          height: "auto",
+          borderRadius: "20px",
+          boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px 0px",
+          marginTop: "20px",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          "&:hover": {
+            transform: "scale(1.05)",
+            boxShadow: "rgba(0, 0, 0, 0.3) 0px 10px 20px",
+          },
+        },
+      },
+    },
+
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          width: 150,
+          height: "auto",
+          objectFit: "cover", // Preenche o espaço mantendo proporção
+          borderTopLeftRadius: "20px",
+          borderBottomLeftRadius: "20px",
+        },
+      },
+    },
+
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: "16px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        },
+      },
+    },
+  },
 });

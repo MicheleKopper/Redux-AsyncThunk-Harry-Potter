@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
-
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 interface Wizard {
   id: string;
@@ -16,37 +10,10 @@ interface Wizard {
 
 export function CardWizard({ name, image, wizard, house }: Wizard) {
   return (
-    <Card
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        width: "100%",
-        height: "auto",
-        borderRadius: "20px",
-        boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px 0px",
-      }}
-    >
-      <CardMedia
-        component="img"
-        sx={{
-          width: 150,
-          height: "auto",
-          objectFit: "cover", // Preenche o espaço mantendo proporção
-          borderTopLeftRadius: "20px",
-          borderBottomLeftRadius: "20px",
-        }}
-        image={image}
-        alt={name}
-      />
+    <Card>
+      <CardMedia component="img" image={image} alt={name} />
 
-      <CardContent
-        sx={{
-          padding: "16px", 
-          display: "flex",
-          flexDirection: "column", 
-          justifyContent: "center",
-        }}
-      >
+      <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
@@ -56,7 +23,5 @@ export function CardWizard({ name, image, wizard, house }: Wizard) {
         <Typography variant="h6">House: {house}</Typography>
       </CardContent>
     </Card>
-
-    
   );
 }
