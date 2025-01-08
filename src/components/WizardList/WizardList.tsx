@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { wizardAsyncThunk } from "../../store/modules/harryPotterSlice";
 import { AppDispatch, Store } from "../../store";
-import { Grid2 } from "@mui/material";
+import { Box } from "@mui/material";
 import { CardWizard } from "../Card/Card";
 
 export function WizardList() {
@@ -22,7 +22,18 @@ export function WizardList() {
   }
 
   return (
-    <Grid2>
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: {
+          xs: "repeat(1, 1fr)", 
+          sm: "repeat(2, 1fr)", 
+          md: "repeat(3, 1fr)", 
+        },
+        gap: "16px", 
+        padding: { xs: "16px", sm: "32px", md: "64px" }, 
+      }}
+    >
       {list.length > 0 ? (
         list.map((wizard) => (
           <CardWizard
@@ -37,6 +48,6 @@ export function WizardList() {
       ) : (
         <p>No wizards found!</p>
       )}
-    </Grid2>
+    </Box>
   );
 }
