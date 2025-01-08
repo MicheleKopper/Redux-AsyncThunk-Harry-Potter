@@ -1,8 +1,7 @@
-import { CardWizard } from "../components/Card/Card";
+
+import { WizardList } from "../components/WizardList/WizardList";
 
 
 export function Home() {
-  return (
-    <CardWizard/>
-  );
+  return <WizardList />;
 }
