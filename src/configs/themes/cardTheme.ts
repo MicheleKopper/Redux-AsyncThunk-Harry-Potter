@@ -35,6 +35,8 @@ export const cardTheme = createTheme({
         root: {
           display: "flex",
           flexDirection: "row",
+          
+        
           width: "370px",
           height: "auto",
           borderRadius: "20px",
@@ -55,8 +57,7 @@ export const cardTheme = createTheme({
           width: 150,
           height: "auto",
           objectFit: "cover", // Preenche o espaço mantendo proporção
-          borderTopLeftRadius: "20px",
-          borderBottomLeftRadius: "20px",
+         
         },
       },
     },

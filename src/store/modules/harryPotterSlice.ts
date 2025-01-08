@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface Wizard {
@@ -19,16 +19,20 @@ interface WizardApiResponse {
 
 interface WizardState {
   list: Wizard[];
+  itemsList: Wizard[];
   loading: boolean;
   total: number;
   currentPage: number;
+  itemsPage: number;
 }
 
 const initialState: WizardState = {
   list: [],
+  itemsList: [],
   loading: false,
   total: 0,
   currentPage: 1,
+  itemsPage: 18,
 };
 
 // Buscar os dados da API
@@ -55,7 +59,16 @@ export const wizardAsyncThunk = createAsyncThunk<Wizard[]>(
 const wizardSlice = createSlice({
   name: "wizard",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    // Define a página atual e recalcula os itens exibidos
+    setPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+
+      const startIndex = (state.currentPage - 1) * state.itemsPage;
+      const endIndex = startIndex + state.itemsPage;
+      state.itemsList = state.list.slice(startIndex, endIndex);
+    },
+  },
   extraReducers(builder) {
     builder
 
@@ -67,8 +80,15 @@ const wizardSlice = createSlice({
         state.loading = false;
         state.list = action.payload;
         state.total = action.payload.length;
+
+        // Calcula os items da primeira página
+        state.itemsList = state.list.slice(0, state.itemsPage);
       });
   },
 });
 
+// Action
+export const { setPage } = wizardSlice.actions;
+
+// Reducer
 export const wizardReducer = wizardSlice.reducer;
