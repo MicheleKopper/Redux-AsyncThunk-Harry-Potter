@@ -13,7 +13,6 @@ export function WizardList() {
 
   // Busca os personagens na página atual
   useEffect(() => {
-    console.log("O useEffect foi disparado!"); // Log para verificar se o useEffect foi disparado
     dispatch(wizardAsyncThunk());
   }, [dispatch]);
 
@@ -27,7 +26,7 @@ export function WizardList() {
       {list.length > 0 ? (
         list.map((wizard) => (
           <CardWizard
-            key={wizard.id} // Adicione uma chave única
+            key={wizard.id}
             id={wizard.id}
             name={wizard.name}
             image={wizard.image}
@@ -36,7 +35,7 @@ export function WizardList() {
           />
         ))
       ) : (
-        <p>Nenhum bruxo encontrado.</p>
+        <p>No wizards found!</p>
       )}
     </Grid2>
   );

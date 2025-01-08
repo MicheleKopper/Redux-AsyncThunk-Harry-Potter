@@ -8,7 +8,5 @@ export const store = configureStore({
   },
 });
 
-console.log("Store configurado:", store.getState()); 
-
 export type Store = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

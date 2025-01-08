@@ -38,7 +38,6 @@ export const wizardAsyncThunk = createAsyncThunk<Wizard[]>(
     const response = await axios.get<WizardApiResponse[]>(
       "https://hp-api.onrender.com/api/characters"
     );
-    console.log(response.data);
 
     const results: Wizard[] = response.data.map((wizard) => ({
       id: wizard.id,
@@ -65,8 +64,6 @@ const wizardSlice = createSlice({
       })
 
       .addCase(wizardAsyncThunk.fulfilled, (state, action) => {
-        console.log("Dados recebidos:", action.payload);
-       
         state.loading = false;
         state.list = action.payload;
         state.total = action.payload.length;
